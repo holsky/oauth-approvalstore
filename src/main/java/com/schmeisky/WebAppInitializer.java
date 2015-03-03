@@ -1,13 +1,13 @@
 package com.schmeisky;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRegistration;
-
-import org.springframework.security.oauth2.provider.endpoint.WhitelabelApprovalEndpoint;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
@@ -16,6 +16,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
         final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(OAuthConfig.class);
         context.register(SecurityConfig.class);
+        context.register(ThymeleafConfiguration.class);
 
         servletContext.addListener(new ContextLoaderListener(context));
 

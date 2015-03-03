@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>OAuth confirm_access</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+        <h2>Please Confirm</h2>
+
+    <p>
+        You hereby authorize '<span th:text="${authorizationRequest.clientId}"/>' to access your protected resources.
+    </p>
+
+    <form action="#" th:action="@{/oauth/authorize}" method="post">
+        <ul>
+         <li th:each="scope : ${scopes}"> <span th:text="${scope}"/>
+             <input type="radio" th:name="${scope}" value="true">Approve</input>
+             <input type="radio" th:name="${scope}" value="false">Deny</input>
+            </li>
+
+        </ul>
+
+        <input name="user_oauth_approval" value="true" type="hidden" />
+        <input name='authorize' value='Authorize' type='submit'/>
+    </form>
+   
+
+</body>
+</html>

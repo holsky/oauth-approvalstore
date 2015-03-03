@@ -50,7 +50,8 @@ public class OAuthConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(final AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenServices(tokenServices)              //
-                 .userApprovalHandler(userApprovalHandler); //
+                 .userApprovalHandler(userApprovalHandler)
+                .pathMapping("/oauth/confirm_access", "/access_confirmation");
     }
 
     @Bean
@@ -90,6 +91,15 @@ public class OAuthConfig extends AuthorizationServerConfigurerAdapter {
     
     @Bean
     public ViewResolver viewResolver () {
-        return new InternalResourceViewResolver();
+        final InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/");
+        resolver.setSuffix(".html");
+        return resolver;
+    }
+    
+    @Bean
+    public AccessConfirmationController controller() {
+        return new AccessConfirmationController();
+        
     }
 }
