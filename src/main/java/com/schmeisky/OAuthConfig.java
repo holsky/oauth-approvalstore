@@ -67,10 +67,8 @@ public class OAuthConfig extends AuthorizationServerConfigurerAdapter {
 
     @Bean
     public UserApprovalHandler userApprovalHandler(final TokenStore tokenStore) {
-        final ApprovalStoreUserApprovalHandler handler = new ApprovalStoreUserApprovalHandler();
-        handler.setApprovalStore( new InMemoryApprovalStore());
-        //final TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
-        //handler.setTokenStore(tokenStore);
+        final TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
+        handler.setTokenStore(tokenStore);
         handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService()));
         return handler;
     }
@@ -92,9 +90,6 @@ public class OAuthConfig extends AuthorizationServerConfigurerAdapter {
     
     @Bean
     public ViewResolver viewResolver () {
-        final InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/");
-        resolver.setSuffix(".html");
-        return resolver;
+        return new InternalResourceViewResolver();
     }
 }
