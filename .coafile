@@ -1,0 +1,4 @@
+[Default]
+bears = SpaceConsistencyBear
+files = **/*.arbitrary
+use_spaces = 
