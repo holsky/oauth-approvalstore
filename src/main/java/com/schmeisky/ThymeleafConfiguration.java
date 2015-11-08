@@ -18,8 +18,8 @@ public class ThymeleafConfiguration extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/WEB-INF/");     
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");      
-        resolver.setOrder(1);
-        return resolver;
+        resolver.setOrder(1);    
+        return resolver;       
 
 
 
@@ -29,7 +29,7 @@ public class ThymeleafConfiguration extends WebMvcConfigurerAdapter {
     public SpringTemplateEngine templateEngine() {
         final SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setTemplateResolver(templateResolver());
-        return engine;
+        return engine;    
     }
 
     @Bean
