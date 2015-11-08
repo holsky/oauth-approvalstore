@@ -1,4 +1,4 @@
 [Default]
 bears = SpaceConsistencyBear
-files = **/*.arbitrary
-use_spaces = 
+files = **/*.java
+use_spaces = True
